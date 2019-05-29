@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= @garden.banner_url %>);">
+  <div class="container">
+    <h1 class="text-center"><%= @garden.name %></h1>
+  </div>
+</div>
+<div class="container padded"><p>
+  <strong>Name:</strong>
+  <%= @garden.name %>
+</p>
+
+<p>
+  <strong>Banner url:</strong>
+  <%= @garden.banner_url %>
+</p></div>
+
+
+
+<div class="row">
+	
+<% @garden.plants.each do |plant| %>
+<div class="col-sm-4 padded" style="height: 400px">
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= plant.image_url%>);">
+  <div class="container">
+    <h1><%= plant.name %></h1>
+    <%= link_to "Destroy", plant_path(plant), method: :delete %>
+  </div>
+</div>
+</div>
+<% end %>
+</div>
+
+
+
+<div class="col-sm-4 offset-4">
+<%= simple_form_for [@garden, @plant], class: 'padded' do |f| %>
+  <%= f.input :name %>
+  <%= f.input :image_url%>
+  <%= f.button :submit, class: "btn btn-primary" %>
+<% end %>
+</div>
+<%= link_to 'Edit', edit_garden_path(@garden), class: 'btn btn-warning' %> |
+<%= link_to 'Back', gardens_path, class: 'btn btn-primary' %>

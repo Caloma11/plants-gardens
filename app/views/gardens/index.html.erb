@@ -1,0 +1,12 @@
+
+<div class="row">
+<% @gardens.each do |garden|%>
+<div class="col-sm-4" style="height: 400px">
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= garden.banner_url%>);">
+  <div class="container">
+    <h1><%=  link_to garden.name, garden_path(garden), class: "link-unstyled" %></h1>
+  </div>
+</div>
+</div>
+<% end %>
+</div>
